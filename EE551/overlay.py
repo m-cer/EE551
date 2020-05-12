@@ -27,15 +27,15 @@ class system_stats:
 		dt = (datetime.now()-self.datetime).total_seconds()
 		
 		s_recv = (net[0] - self.sent)/dt
-		recv, r_u = simple_bits(s_recv) 
+		recv, r_u = simple_bytes(s_recv) 
 		recv = 'Down: {:.2f} {}'.format(recv, r_u)
 		
 		s_sent = (net[1] - self.recv)/dt
-		sent, s_u = simple_bits(s_sent) 
+		sent, s_u = simple_bytes(s_sent) 
 		sent = 'Up: {:.2f} {}'.format(sent, s_u)
 		
 		s_tot = s_recv+s_sent
-		tot, t_u = simple_bits(s_tot)
+		tot, t_u = simple_bytes(s_tot)
 		tot = 'Total: {:.2f} {}'.format(tot, t_u)
 		
 		stats = '\n'.join((cpu, load, mem, sent, recv, tot))
@@ -49,17 +49,17 @@ class system_stats:
 		draw.text((5,5),stats,fill="white")
 		return frame
 
-def simple_bits(bits):
-	if bits/(1024**2) < 1:
-		if bits/1024 < 1:
+def simple_byte(bytes):
+	if bytes/(1024**2) < 1:
+		if bytes/1024 < 1:
 			unit = 'bps'
 		else:
-			bits = bits/1024
+			bytes = bytes/1024
 			unit = 'kibps'
 	else:
-		bits = bits/(1024**2)
+		bytes = bytes/(1024**2)
 		unit = 'Mibps'
-	return (bits, unit)
+	return (bytes, unit)
 			
 			
 			
