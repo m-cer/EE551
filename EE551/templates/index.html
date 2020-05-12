@@ -6,22 +6,26 @@
 	<script type="text/javascript" src="{{url_for('static',filename='nouislider.min.js')}}"></script>
 	<style>
 	html, body {margin: 0; height: 100%; overflow: hidden}
-        #rangeA {
-		height: 300px;
-		width: 15px;
-		margin-left: 30px;
-		margin-right: 30px;
+    #rangeA {
+		height: 400px;
+		width: 20px;
+		margin-left: 10%;
+		margin-right: 0px;
 		margin-top: 50px;
 		float: left;
         }
 	#rangeB{
-		height: 300px;
-		width: 15px;
-		margin-left: 30px;
-		margin-right: 30px;
+		height: 400px;
+		width: 20px;
+		margin-left: 0px;
+		margin-right: 10%;
 		margin-top: 50px;
 		float: right;
         }
+	
+	#rangeA.noUi-vertical .noUi-tooltip {
+		right: -170%;
+	}
 	img{
 		display: block;
 		margin-left: auto;
@@ -40,13 +44,15 @@
     var rangeA = document.getElementById('rangeA');
 
     noUiSlider.create(rangeA, {
-        start: 0, // Handle start position
-        step: 0.05, // Slider moves in increments of '10'
-        orientation: 'vertical', // Orient the slider vertically
-        range: { // Slider can select '0' to '100'
+        start: 0,
+		direction: 'rtl',
+        step: 0.05,
+        orientation: 'vertical',
+        range: {
             'min': -1,
             'max': 1
-        }
+        },
+		tooltips: true
     });
 	
 	rangeA.noUiSlider.on('update', function() {
@@ -62,13 +68,15 @@
 	var rangeB = document.getElementById('rangeB');
 
     noUiSlider.create(rangeB, {
-        start: 0, // Handle start position
-        step: 0.05, // Slider moves in increments of '10'
-        orientation: 'vertical', // Orient the slider vertically
-        range: { // Slider can select '0' to '100'
+        start: 0,
+		direction: 'rtl',
+        step: 0.05,
+        orientation: 'vertical',
+        range: { //
             'min': -1,
             'max': 1
-        }
+        },
+		tooltips: true
     });
 	
 	rangeB.noUiSlider.on('update', function() {
