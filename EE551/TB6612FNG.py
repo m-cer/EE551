@@ -67,10 +67,14 @@ class TB6612FNG(SourceMixin, CompositeDevice):
 	def reverse(self):
 		self.value = -self.value
 	
+	def short_brake(self)
+		self.output_one_device.on()
+		self.output_two_device.on()
+	
 	def stop(self):
 		self.output_one_device.off()
 		self.output_two_device.off()
-		self.pwm_device.value = 0
+		self.pwm_device.value = 1
 
 #test
 def motor_test():
